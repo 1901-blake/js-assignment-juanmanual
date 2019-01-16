@@ -20,19 +20,18 @@ Example for printShape("Diamond", 5, "*");
  ***
   * 
 */
+
 function printShape (shape, height, character) {
-  
+
+let printSquare  = (height, character) => {
+  for (let i = 0; i < height; i++) {
+    console.log(character.repeat(height))
+  }
 }
 
-function printSquare (height, character) {
-  let line = "";
-  for (let i = 0; i < height; i++) {
-    line += character
-  }
-  for (let i = 0; i < height; i++) {
-    console.log(line)
-  }
-
+let printTriangle = (height, character) => {
+  for (let i = 0; i < height; i++) 
+    console.log(character.repeat(i))
 }
 
 function printDiamond (height, character) {
@@ -40,10 +39,32 @@ function printDiamond (height, character) {
   // build the triangle up
   for(let i = 1; i<height; i+=2)
     console.log(" ".repeat((height-i)/2) + character.repeat(i))
-
   // middle layer
   console.log(character.repeat(height))
+  // going down!
+  for(let i = height-2; i>0; i-=2)
+    console.log(" ".repeat((height-i)/2) + character.repeat(i))
+}
+  switch (shape) {
+    case "Square":
+      printSquare(height, character)
+      break;
+    case "Triangle":
+      printTriangle(height, character)
+      break;
+    case "Diamond":
+      printDiamond(height,character)
+      break;
+  }
+}
 
+function printDiamond (height, character) {
+  let line = ""
+  // build the triangle up
+  for(let i = 1; i<height; i+=2)
+    console.log(" ".repeat((height-i)/2) + character.repeat(i))
+  // middle layer
+  console.log(character.repeat(height))
   // going down!
   for(let i = height-2; i>0; i-=2)
     console.log(" ".repeat((height-i)/2) + character.repeat(i))
@@ -56,13 +77,3 @@ let line = "";
     console.log(line)
   }
 }
-
-printDiamond(1, "*")
-printDiamond(3, "*")
-printDiamond(11, "*")
-printTriangle(1, "*")
-printTriangle(3, "*")
-printTriangle(5, "*")
-printSquare(1,"*")
-printSquare(3,"*")
-printSquare(5,"*")
